@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KickSpot - Sneaker Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f0f10; --card:#171719; --muted:#a1a1a1; --text:#ffffff; --accent:#06f; --accent-2:#0cf; --shadow: rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,#0b0b0c,#121214);color:var(--text)}
+    a{color:inherit}
+    header{position:sticky;top:0;z-index:20;background:rgba(15,15,16,.8);backdrop-filter:blur(8px);border-bottom:1px solid #202022}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1rem}
+    .brand{display:flex;align-items:center;gap:.6rem}
+    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 6px 18px var(--shadow)}
+    .brand h2{margin:0;font-size:1.15rem;letter-spacing:.5px}
+    .links a{margin:0 .6rem;text-decoration:none;color:#e8e8ea}
+    .links a:hover{opacity:.85}
+
+    .hero{max-width:1200px;margin:1.5rem auto 0;display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem;align-items:center;padding:0 1rem}
+    .hero .copy{padding:1.25rem 0}
+    .hero h1{margin:.2rem 0 0;font-size:2.4rem;line-height:1.1}
+    .hero p{margin:.6rem 0 1rem;color:var(--muted)}
+    .cta{display:inline-block;background:var(--text);color:#000;padding:.7rem 1rem;border-radius:12px;text-decoration:none;font-weight:600}
+    .cta:hover{opacity:.9}
+    .hero .banner{position:relative;height:260px;border-radius:18px;overflow:hidden;background:radial-gradient(120% 120% at 0% 100%, #1b1b1f 0%, #0f0f10 60%);box-shadow:0 10px 30px var(--shadow)}
+    .banner img{position:absolute;right:-20px;bottom:-10px;width:420px;max-width:90%;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+
+    .container{max-width:1200px;margin:1.5rem auto;padding:0 1rem}
+    .section-title{display:flex;align-items:center;justify-content:space-between;margin:1rem 0}
+    .section-title h3{margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+
+    .card{background:var(--card);border:1px solid #232327;border-radius:16px;box-shadow:0 8px 22px var(--shadow);padding:0.75rem;transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px var(--shadow)}
+    .thumb{border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#0b0b0d;display:flex;align-items:center;justify-content:center}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .meta{display:flex;align-items:center;justify-content:space-between;margin:.6rem 0 .2rem}
+    .title{font-weight:600}
+    .price{font-weight:700}
+    .actions{display:flex;gap:.5rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.55rem .85rem;border-radius:10px;text-decoration:none;border:1px solid #2a2a2e;background:#1a1a1e;color:#fff;cursor:pointer}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));border:none;color:#000;font-weight:700}
+
+    /* Detail view */
+    .hidden{display:none}
+    .detail{display:grid;grid-template-columns:1.1fr .9fr;gap:1.25rem}
+    .detail .big{border-radius:16px;overflow:hidden;background:#0b0b0d;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center}
+    .detail .big img{width:100%;height:100%;object-fit:cover}
+    .crumbs{color:var(--muted);margin:.5rem 0 1rem}
+    .buyrow{display:flex;gap:.6rem;align-items:center;margin-top:1rem}
+
+    footer{text-align:center;padding:1.25rem;color:#cfcfd3;border-top:1px solid #202022;margin-top:2rem}
+
+    @media (max-width: 900px){
+      .hero, .detail{grid-template-columns:1fr}
+      .hero .banner{height:220px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo"></div>
+        <h2>KickSpot</h2>
+      </div>
+      <div class="links">
+        <a href="#">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="copy">
+      <h1>Exclusive Sneakers</h1>
+      <p>Buy & resell your favorite pairs. Small curated drops, authentic only.</p>
+      <a class="cta" href="#shop">Shop the drop</a>
+    </div>
+    <div class="banner" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop" alt="Featured sneaker"/>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="section-title" id="shop">
+      <h3>Available Sneakers</h3>
+      <span style="color:var(--muted);font-size:.95rem">Tap a pair to view details</span>
+    </div>
+
+    <!-- Shop Grid View -->
+    <section id="shop-view" class="grid" aria-label="Shop grid"></section>
+
+    <!-- Detail View -->
+    <section id="detail-view" class="hidden" aria-live="polite">
+      <div class="crumbs"><a href="#">Home</a> / <a href="#shop">Shop</a> / <span id="crumb-name">Item</span></div>
+      <div class="detail">
+        <div class="big"><img id="detail-img" alt="Product image"/></div>
+        <div>
+          <h2 id="detail-name">Product</h2>
+          <p id="detail-desc" style="color:var(--muted)">Description</p>
+          <div class="meta">
+            <div class="price" id="detail-price">$0</div>
+          </div>
+          <div class="buyrow">
+            <a id="buy-btn" class="btn primary" target="_blank">Buy Now</a>
+            <a class="btn" href="#shop">Back to shop</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div>Contact: <a href="mailto:info@kickspot.com">info@kickspot.com</a></div>
+    <div style="margin-top:.3rem">&copy; 2025 KickSpot</div>
+  </footer>
+
+  <script>
+    let PRODUCTS = [];
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/data/products/');
+        const text = await res.text();
+        const files = [...text.matchAll(/href="([^"]+\.json)"/g)].map(m => m[1]);
+
+        const list = [];
+        for (let file of files) {
+          const r = await fetch(`/data/products/${file}`);
+          const data = await r.json();
+          list.push({
+            slug: data.name.toLowerCase().replace(/\s+/g, "-"),
+            name: data.name,
+            price: data.price,
+            image: data.image,
+            description: data.description || "No description available.",
+            link: data.link
+          });
+        }
+        return list;
+      } catch (err) {
+        console.error("Error loading products", err);
+        return [];
+      }
+    }
+
+    const shopView = document.getElementById('shop-view');
+    const detailView = document.getElementById('detail-view');
+    const crumbName = document.getElementById('crumb-name');
+    const detailImg = document.getElementById('detail-img');
+    const detailName = document.getElementById('detail-name');
+    const detailDesc = document.getElementById('detail-desc');
+    const detailPrice = document.getElementById('detail-price');
+    const buyBtn = document.getElementById('buy-btn');
+
+    function money(n){return `$${n.toFixed(2)}`}
+
+    function renderShop(){
+      detailView.classList.add('hidden');
+      shopView.innerHTML = PRODUCTS.map(p => `
+        <article class="card" role="button" tabindex="0" onclick="goTo('${p.slug}')">
+          <div class="thumb"><img loading="lazy" src="${p.image}" alt="${p.name}"></div>
+          <div class="meta">
+            <div class="title">${p.name}</div>
+            <div class="price">${money(p.price)}</div>
+          </div>
+          <div class="actions">
+            <a class="btn" href="#/product/${p.slug}">View Details</a>
+          </div>
+        </article>
+      `).join('');
+      shopView.classList.remove('hidden');
+    }
+
+    function renderDetail(slug){
+      const p = PRODUCTS.find(x => x.slug === slug);
+      if(!p){ location.hash = '#shop'; return; }
+      shopView.classList.add('hidden');
+      crumbName.textContent = p.name;
+      detailImg.src = p.image;
+      detailName.textContent = p.name;
+      detailDesc.textContent = p.description;
+      detailPrice.textContent = money(p.price);
+      buyBtn.href = p.link;
+      detailView.classList.remove('hidden');
+    }
+
+    function goTo(slug){ location.hash = `#/product/${slug}` }
+
+    function router(){
+      const hash = location.hash;
+      const match = hash.match(/^#\/?product\/([A-Za-z0-9\-_.]+)/);
+      if(match){ renderDetail(match[1]); }
+      else { renderShop(); }
+    }
+
+    window.addEventListener('hashchange', router);
+    window.addEventListener('DOMContentLoaded', async () => {
+      PRODUCTS = await fetchProducts();
+      router();
+    });
+  </script>
+</body>
+</html>
