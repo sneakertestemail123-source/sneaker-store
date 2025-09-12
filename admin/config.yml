@@ -1,3 +1,10 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"   # where files go in your repo
+public_folder: "/images/uploads" # how they’re referenced on the site
+
 collections:
   - name: "products"
     label: "Products"
@@ -9,4 +16,4 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Price", name: "price", widget: "number" }
       - { label: "Image", name: "image", widget: "image" }
-      - { label: "Link", name: "link", widget: "string" } # optional, but your JS expects it
+      - { label: "Link", name: "link", widget: "string" }
