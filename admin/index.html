@@ -7,16 +7,10 @@
     <!-- Netlify Identity for login -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- ✅ Correct Netlify CMS path -->
-    <script src="https://unpkg.com/netlify-cms-app@latest/dist/netlify-cms-app.js"></script>
+    <!-- ✅ Use the correct global Netlify CMS build -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <script>
-      if (window.NetlifyCmsApp) {
-        NetlifyCmsApp.init();
-      } else {
-        console.error("❌ NetlifyCmsApp not found. Check your script URL.");
-      }
-    </script>
+    <!-- This automatically boots Netlify CMS -->
   </body>
 </html>

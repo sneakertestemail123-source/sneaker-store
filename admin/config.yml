@@ -1,10 +1,3 @@
-backend:
-  name: git-gateway
-  branch: main # Netlify will push new content to this branch
-
-media_folder: "images/uploads" # where uploaded images go
-public_folder: "/images/uploads"
-
 collections:
   - name: "products"
     label: "Products"
@@ -12,7 +5,8 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Price", name: "price", widget: "number" }
       - { label: "Image", name: "image", widget: "image" }
+      - { label: "Link", name: "link", widget: "string" } # optional, but your JS expects it
