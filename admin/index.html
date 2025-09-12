@@ -7,10 +7,11 @@
     <!-- Netlify Identity for login -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- ✅ Use the correct global Netlify CMS build -->
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <!-- ✅ Correct global Netlify CMS build -->
+    <script src="https://unpkg.com/netlify-cms-app@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <!-- This automatically boots Netlify CMS -->
+    <!-- ✅ Required root element for CMS -->
+    <div id="nc-root"></div>
   </body>
 </html>
