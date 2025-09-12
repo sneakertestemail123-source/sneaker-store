@@ -7,12 +7,11 @@
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-    <!-- ✅ This is the official, stable CMS script -->
+    <!-- ✅ Correct Netlify CMS script -->
     <script src="https://unpkg.com/netlify-cms-app@^2.0.0/dist/netlify-cms.js"></script>
   </head>
   <body>
     <script>
-      // ✅ Wait until script has definitely loaded before initializing
       window.addEventListener("DOMContentLoaded", function () {
         if (window.NetlifyCmsApp) {
           NetlifyCmsApp.init();
